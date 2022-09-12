@@ -4,12 +4,12 @@ using System.Linq;
 
 public class PersonSlot : Area2D
 {
+    [Export]
     public int SlotIndex = 0;
 
     private PersonBase _person;
 
-    [Export]
-    public Game _game;
+    private Game _game;
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()

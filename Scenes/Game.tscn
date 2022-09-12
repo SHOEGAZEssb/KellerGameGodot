@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scenes/Game.cs" type="Script" id=1]
 [ext_resource path="res://Scenes/UI/ScoreDisplay.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/People/PersonBase.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Keller/PersonSlot.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/UI/BuyMenu.tscn" type="PackedScene" id=5]
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 1 )
@@ -15,4 +16,14 @@ scale = Vector2( 0.7, 0.7 )
 [node name="PersonSlot" parent="." instance=ExtResource( 4 )]
 position = Vector2( 210, 27 )
 
+[node name="PersonSlot2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 304, 93 )
+SlotIndex = 1
+
 [node name="ScoreDisplay" parent="." instance=ExtResource( 2 )]
+
+[node name="BuyMenu" parent="ScoreDisplay" instance=ExtResource( 5 )]
+margin_left = 108.0
+margin_top = 112.0
+margin_right = 108.0
+margin_bottom = 112.0

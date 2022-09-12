@@ -10,6 +10,9 @@ public class PersonBase : Area2D
     public string PersonName = "Unnamed";
 
     [Export]
+    public float InitialCost = 10f;
+
+    [Export]
     public float BaseCapsPerSecond = 1f;
 
     [Export]

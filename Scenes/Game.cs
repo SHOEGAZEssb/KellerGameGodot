@@ -33,6 +33,19 @@ public class Game : Node2D
         _inactivePersons.Add(person);
     }
 
+    public bool BuyPerson(PersonBase person)
+    {
+        if (Caps >= person.InitialCost)
+        {
+            _inactivePersons.Add(person);
+            AddChild(person);
+            Caps -= person.InitialCost;
+            return true;
+        }
+        else
+            return false;
+    }
+
     // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(float delta)
     {
