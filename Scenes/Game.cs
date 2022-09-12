@@ -16,16 +16,21 @@ public class Game : Node2D
     {
         _scoreDisplay = GetNode<ScoreDisplay>("ScoreDisplay");
         var john = GetNode<PersonBase>("John");
-        SetActivePerson(john);
     }
 
-    public void SetActivePerson(PersonBase person)
+    public void SetActivePerson(PersonBase person, int slotIndex)
     {
         if (_activePersons.Any(p => p == null))
         {
-            _activePersons[0] = person;
+            _activePersons[slotIndex] = person;
             person.IsActive = true;
         }
+    }
+
+    public void DeactivatePerson(PersonBase person)
+    {
+        _activePersons[Array.IndexOf(_activePersons, person)] = null;
+        _inactivePersons.Add(person);
     }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.

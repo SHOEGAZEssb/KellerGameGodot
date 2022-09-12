@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public class PersonBase : Sprite
+public class PersonBase : Area2D
 {
     [Export]
     public bool IsActive = true;
@@ -27,6 +27,7 @@ public class PersonBase : Sprite
     [Export]
     public float WeedPerSecond = 1f;
 
+    private bool _dragging;
 
 
     // Called when the node enters the scene tree for the first time.
@@ -35,9 +36,19 @@ public class PersonBase : Sprite
         
     }
 
-//  // Called every frame. 'delta' is the elapsed time since the previous frame.
-//  public override void _Process(float delta)
-//  {
-//      
-//  }
+    public void OnInputEvent(Viewport viewPort, InputEvent eventArgs, int shape_idx)
+    {
+        GD.Print("input event");
+        if (eventArgs.IsActionPressed("mouse_click"))
+            _dragging = true;
+        else if (eventArgs.IsActionReleased("mouse_click"))
+            _dragging = false;
+    }
+
+    // Called every frame. 'delta' is the elapsed time since the previous frame.
+    public override void _Process(float delta)
+    {
+        if (_dragging)
+            Position = GetGlobalMousePosition();
+    }
 }
